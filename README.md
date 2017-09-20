@@ -1,24 +1,16 @@
-# README
+## Thrones Trivia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Game of Thrones quote trivia app. Multiple choice questions for matching character to quote.
 
-Things you may want to cover:
+### Setup
 
-* Ruby version
+To get started run:
+* `bundle`
+* `rake db:create`
+* `rake db:migrate`
 
-* System dependencies
+To run the tests:
+* `rake db:test:prepare`
+* `rspec`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To seed the database with questions, run `rake db:seed`.
