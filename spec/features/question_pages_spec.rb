@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'answering a question', js: true do
   context 'the answer is correct' do
     it 'displays a success message' do
-      question = create :question
+      question = create :question_with_answers
 
       visit question_path
       choose "response_answer_id_#{question.correct_answer.id}"
@@ -14,7 +14,7 @@ describe 'answering a question', js: true do
 
   context 'the answer is incorrect' do
     it 'displays a failure message' do
-      question = create :question
+      question = create :question_with_answers
 
       visit question_path
       choose "response_answer_id_#{incorrect_id(question)}"

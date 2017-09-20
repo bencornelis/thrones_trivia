@@ -1,5 +1,5 @@
 def create_response(correct:)
-  question = create :question
+  question = create :question_with_answers
   response_answer = question.answers.find_by(correct: correct)
   create :response,
          question: question,

@@ -17,7 +17,7 @@ RSpec.describe Question, type: :model do
 
   describe '#correct_answer' do
     it 'is the correct answer for the question' do
-      question = create :question
+      question = create :question_with_answers
 
       expect(question.correct_answer.correct).to be true
     end
