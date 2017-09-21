@@ -1,9 +1,13 @@
 = form_for [@question, Response.new], remote: true do |f|
   %ul.list-group
     - @question.answers.each do |answer|
-      %li.list-group-item{id: "answer_#{answer.id}"}
-        = f.radio_button :answer_id, answer.id
-        = f.label :answer_id, answer.character.name, :value => answer.id
+      %li.list-group-item.answer{id: "answer_#{answer.id}"}
+        = f.radio_button :answer_id, answer.id, class: 'clickable'
+        = f.label :answer_id,
+                  answer.character.name,
+                  value: answer.id,
+                  class: 'clickable'
+
   = f.submit "Submit", disabled: true, class: "btn btn-success"
 
   = link_to "Try another",
