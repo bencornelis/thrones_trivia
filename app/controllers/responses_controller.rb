@@ -1,15 +1,11 @@
 class ResponsesController < ApplicationController
-  def show
-    @question = Question.find(params[:question_id])
-    @response = Response.find(params[:id])
-  end
-
   def create
-    question = Question.find(params[:question_id])
-    response = Response.create(response_params)
+    @question = Question.find(params[:question_id])
+    @response = Response.create(response_params)
 
-    redirect_to question_response_path(question, response),
-                notice: notice(response)
+    respond_to do |format|
+      format.js { flash[:notice] = notice(@response) }
+    end
   end
 
   private

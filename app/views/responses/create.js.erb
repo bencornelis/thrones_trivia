@@ -1,0 +1,12 @@
+$responseAnswerli = $('#answer_<%= @response.answer.id %>');
+$correctAnswerli = $('#answer_<%= @question.correct_answer.id %>');
+
+$responseAnswerli.addClass('list-group-item-danger');
+$correctAnswerli
+  .removeClass('list-group-item-danger')
+  .addClass('list-group-item-success');
+
+$('#character').text('<%= @question.correct_character.name %>');
+$('#result').text('<%= flash[:notice] %>')
+$('input[type=submit]').hide();
+$('#try-again').removeClass('hidden');
