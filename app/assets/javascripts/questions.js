@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
     $('input:submit').prop('disabled', false);
   });
 
-  $('.answer').click(function() {
+  $('.clickable').click(function() {
     $(this).find('input:radio').prop('checked', true).change();
   });
 });

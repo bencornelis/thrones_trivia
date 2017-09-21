@@ -10,3 +10,10 @@ $('#character').text('<%= @question.correct_character.name %>');
 $('#result').text('<%= flash[:notice] %>')
 $('input[type=submit]').hide();
 $('#try-again').removeClass('hidden');
+
+$form = $('#new_response');
+$form.find('input:radio').prop('disabled', true);
+$form.find('*')
+  .removeClass('clickable')
+  .unbind('click')
+  .addClass('not-allowed');
