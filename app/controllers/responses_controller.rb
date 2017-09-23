@@ -1,7 +1,8 @@
 class ResponsesController < ApplicationController
   def create
-    @question = Question.find(params[:question_id])
-    @response = Response.create(response_params)
+    question = Question.find(params[:question_id])
+    @response = question.responses.build(response_params)
+    @response.save
 
     respond_to do |format|
       format.js { flash[:notice] = notice(@response) }
@@ -11,8 +12,7 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response)
-      .permit(:answer_id).merge(params.permit(:question_id))
+    params.require(:response).permit(:answer_id)
   end
 
   def notice(response)

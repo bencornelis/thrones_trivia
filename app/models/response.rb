@@ -4,6 +4,8 @@ class Response < ApplicationRecord
 
   after_create :set_correctness
 
+  delegate :correct_answer, :correct_character, to: :question
+
   private
 
   def set_correctness
