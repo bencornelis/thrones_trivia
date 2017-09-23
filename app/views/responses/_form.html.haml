@@ -2,11 +2,11 @@
   %ul.list-group
     - @question.answers.each do |answer|
       %li.list-group-item.clickable{id: "answer_#{answer.id}"}
-        = f.radio_button :answer_id, answer.id, class: 'clickable'
+        = f.radio_button :answer_id, answer.id
         = f.label :answer_id,
                   answer.character.name,
                   value: answer.id,
-                  class: 'clickable answer-label'
+                  class: 'answer-label'
 
   = f.submit "Submit", disabled: true, class: "btn btn-success"
 

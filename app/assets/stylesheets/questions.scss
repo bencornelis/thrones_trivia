@@ -6,8 +6,11 @@
   height: 200px;
 }
 
-.clickable {
-  cursor: pointer;
+.clickable, .clickable input, .clickable label {
+  &:hover {
+    cursor: pointer;
+    background: #f7f7f9;
+  }
 }
 
 .not-allowed {
