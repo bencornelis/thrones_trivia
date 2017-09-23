@@ -6,6 +6,7 @@ RSpec.describe Question, type: :model do
   end
 
   it { should have_many :answers }
+  it { should have_many :responses }
 
   describe '.random' do
     it 'returns a question' do
