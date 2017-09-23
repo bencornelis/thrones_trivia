@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'answering a question', js: true do
   it 'shows the character that said the quote' do
-    view_question_and_sumbit_answer
+    view_question_and_submit_answer
 
     within('#character') do
       expect(page).to have_content 'Stark #1'
@@ -11,7 +11,7 @@ describe 'answering a question', js: true do
 
   context 'the answer is correct' do
     it 'displays a success message' do
-      view_question_and_sumbit_answer(correct: true)
+      view_question_and_submit_answer(correct: true)
 
       expect(page).to have_content 'You got it! Great work :)'
     end
@@ -19,13 +19,13 @@ describe 'answering a question', js: true do
 
   context 'the answer is incorrect' do
     it 'displays a failure message' do
-      view_question_and_sumbit_answer(correct: false)
+      view_question_and_submit_answer(correct: false)
 
       expect(page).to have_content 'Nice try, but wrong answer.'
     end
   end
 
-  def view_question_and_sumbit_answer(correct: false)
+  def view_question_and_submit_answer(correct: false)
     question = create :question_with_answers
     answer_id = question.answers.find_by(correct: correct).id
 
