@@ -2,7 +2,8 @@ class Response < ApplicationRecord
   belongs_to :question
   belongs_to :answer
 
-  after_create :set_correctness
+  before_create :set_correctness
+  after_create :increment_question_correct_count, if: :correct
 
   delegate :correct_answer, :correct_character, to: :question
 
@@ -10,7 +11,9 @@ class Response < ApplicationRecord
 
   def set_correctness
     self.correct = question.correct_response?(self)
-    question.correct_count += 1 if correct
-    question.save
+  end
+
+  def increment_question_correct_count
+    question.increment!(:correct_count)
   end
 end
